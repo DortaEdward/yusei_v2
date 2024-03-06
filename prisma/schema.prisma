@@ -18,3 +18,26 @@ model Post {
 
     @@index([name])
 }
+
+model Card {
+    id             Int      @id @default(autoincrement())
+    pretty_url     String?
+    name           String?
+    type           String?
+    color          String?
+    color2         String?
+    stage          String?
+    attribute      String?
+    level          Int?
+    play_cost      Int?
+    evolution_cost Int?
+    cardrarity     String?
+    artist         String?
+    dp             Int?
+    digi_type      String?
+    cardnumber     String?
+    maineffect     String?
+    soureeffect    String?
+    set_name       String?
+    card_sets      String[]
+}

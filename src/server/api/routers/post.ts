@@ -1,13 +1,21 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { z } from "zod";
-
+import data from "../../../data/data.json";
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 
 export const postRouter = createTRPCRouter({
   hello: publicProcedure
-    .input(z.object({ text: z.string() }))
-    .query(({ input }) => {
+    .query(async ({ctx}) => {
+      try {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+        await ctx.db.card.createMany({
+          data: data
+        })
+      } catch (error) {
+        console.error("Error seeding db: ", error.message)
+      }
       return {
-        greeting: `Hello ${input.text}`,
+        greeting: `Hello`,
       };
     }),
 
