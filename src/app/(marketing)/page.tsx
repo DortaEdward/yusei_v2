@@ -18,13 +18,13 @@ export default async function Home() {
       <div className=" flex items-center">
         {userId ? (
           <>
-            <div className="rounded bg-blue-500 px-4 py-2 text-center font-medium text-white">
+            <div className="rounded bg-green-500 px-4 py-2 text-center font-medium text-white">
               <Link href="/dashboard">Dashboard</Link>
             </div>
           </>
         ) : (
           <>
-            <div className="rounded bg-blue-500 px-4 py-2 text-center font-medium text-white">
+            <div className="rounded bg-green-500 px-4 py-2 text-center font-medium text-white">
               <SignInButton>Get Started</SignInButton>
             </div>
             <div className="px-4 py-2">

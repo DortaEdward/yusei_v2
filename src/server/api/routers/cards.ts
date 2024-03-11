@@ -1,22 +1,30 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { z } from "zod";
 import data from "../../../data/data.json";
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 
-export const postRouter = createTRPCRouter({
-  seed: publicProcedure
-    .query(async ({ ctx }) => {
-    // const seed = await api.post.seed.query();
+export const cardRouter = createTRPCRouter({
+  getCards: publicProcedure
+    .input(z.object(
+      {
+        limit: z.number().default(30).nullish(),
+        offset: z.number().default(0).nullish(),
+      })
+    )
+    .query(async ({ ctx, input }) => { 
+      const {limit, offset} = input
       try {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-        await ctx.db.card.createMany({
-          data: data
-        })
+        const cards = await ctx.db.Card.findMany({
+        skip:offset,
+        take:limit,
+      })
+      return {
+        cards
+      };
       } catch (error) {
-        console.error("Error seeding db: ", error.message)
+        console.error("Error getting cards: ", error.message)
       }
       return {
-        greeting: `Hello`,
+        cards:null
       };
     }),
 

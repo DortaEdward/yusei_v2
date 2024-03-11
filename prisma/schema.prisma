@@ -21,7 +21,6 @@ model Post {
 
 model Card {
     id             Int      @id @default(autoincrement())
-    pretty_url     String?
     name           String?
     type           String?
     color          String?

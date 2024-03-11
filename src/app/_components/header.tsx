@@ -7,7 +7,7 @@ export default function Header() {
     <header className="flex items-center justify-between lg:px-28 px-10 py-6 relative border">
       <div>
         <p className="text-2xl font-bold tracking-wider">
-          Tcg<span className="text-blue-500">Comp</span>
+          Digi<span className="text-green-500">Labs</span>
         </p>
       </div>
       <HeaderMenu userId={userId} />

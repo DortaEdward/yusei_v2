@@ -1,5 +1,4 @@
-import Footer from "../_components/footer.tsx"
-import Header from "../_components/header.tsx";
+import Header from "../../_components/header.tsx"
 
 export default function RootLayout({
   children,
@@ -10,7 +9,6 @@ export default function RootLayout({
     <div className="flex min-h-screen w-full flex-col">
       <Header />
       { children }
-      <Footer />
     </div>
   );
 }
