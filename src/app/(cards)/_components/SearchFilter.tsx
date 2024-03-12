@@ -10,7 +10,8 @@ export default function SearchFilter() {
   const stages = ["armor form", "baby", "champion", "d-reaper", "hybrid", "in-training", "mega", "rookie", "ultimate"]
   const playCosts = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
   const evoCosts = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-  const digiTypes = ["Select Digi-Type", "9000",
+  const digiTypes = [
+    "9000",
     "AA Defense Agent",
     "Abadin Electronics",
     "Ability Synthesis Agent",
@@ -188,12 +189,16 @@ export default function SearchFilter() {
   return (
     <form className="flex">
       <fieldset>
-        <label htmlFor="attribute">Attribute</label>
-        <select>
+        <input className="px-2 py-1 outline none" placeholder="Card Name" name="name" type="text" />
+      </fieldset>
+
+      <fieldset className="">
+        <select className="bg-gray-100 px-2 py-1 rounded cursor-pointer outline-none">
+          <option value="" disabled selected>Select Attribute</option>
           {
             attributes.map((attribute: string) => {
               return(
-                <option value={attribute} key={attribute}>{attribute}</option>
+                <option className="capitalize" value={attribute} key={attribute}>{attribute}</option>
               )
             })
           }
@@ -201,12 +206,12 @@ export default function SearchFilter() {
       </fieldset>
 
       <fieldset>
-        <label htmlFor="level">Level</label>
-        <select>
+        <select className="bg-gray-100 px-2 py-1 rounded cursor-pointer outline-none">
+          <option value="" disabled selected>Select Level</option>
           {
             levels.map((level: number) => {
               return(
-                <option value={level} key={level}>{level}</option>
+                <option className="capitalize" value={level} key={level}>{level}</option>
               )
             })
           }
@@ -214,12 +219,12 @@ export default function SearchFilter() {
       </fieldset>
 
       <fieldset>
-        <label htmlFor="play_cost">Play Cost</label>
-        <select>
+        <select className="bg-gray-100 px-2 py-1 rounded cursor-pointer outline-none">
+          <option value="" disabled selected>Select Cost</option>
           {
             playCosts.map((cost: string) => {
               return(
-                <option value={cost} key={cost}>{cost}</option>
+                <option className="capitalize" value={cost} key={cost}>{cost}</option>
               )
             })
           }
@@ -227,12 +232,38 @@ export default function SearchFilter() {
       </fieldset>
 
       <fieldset>
-        <label htmlFor="evolution_cost">Evolution Cost</label>
-        <select>
+        <select className="bg-gray-100 px-2 py-1 rounded cursor-pointer outline-none">
+          <option value="" disabled selected>Select Primary Color</option>
+          {
+            colors.map((color: string) => {
+              return(
+                <option className="capitalize" value={color} key={color}>{color}</option>
+              )
+            })
+          }
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <select className="bg-gray-100 px-2 py-1 rounded cursor-pointer outline-none">
+          <option value="" disabled selected>Select Secondary Color</option>
+          {
+            colors.map((color: string) => {
+              return(
+                <option className="capitalize" value={color} key={color}>{color}</option>
+              )
+            })
+          }
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <select className="bg-gray-100 px-2 py-1 rounded cursor-pointer outline-none">
+          <option value="" disabled selected>Select Evolution Cost</option>
           {
             evoCosts.map((cost: string) => {
               return(
-                <option value={cost} key={cost}>{cost}</option>
+                <option className="capitalize" value={cost} key={cost}>{cost}</option>
               )
             })
           }
@@ -240,32 +271,15 @@ export default function SearchFilter() {
       </fieldset>
 
       <fieldset>
-        <label htmlFor="digi_type">Digi Type</label>
-        <select>
+        <select className="bg-gray-100 px-2 py-1 rounded cursor-pointer outline-none">
+          <option value="" disabled selected>Select Type</option>
           {
             digiTypes.map((types: string) => {
               return(
-                <option value={types} key={types}>{types}</option>
+                <option className="capitalize" value={types} key={types}>{types}</option>
               )
             })
           }
-        </select>
-      </fieldset>
-
-      <fieldset>
-        <label htmlFor="maineffect">Main Effect</label>
-        <input placeholder="Main Effect" name="maineffect" id="maineffect" type="text" />
-      </fieldset>
-
-      <fieldset>
-        <label htmlFor="soureeffect">Source Effect</label>
-        <input placeholder="Source Effect" name="soureeffect" id="soureeffect" type="text" />
-      </fieldset>
-
-      <fieldset>
-        <label htmlFor="set_name">Set Name</label>
-        <select>
-          <option>Get Sets</option>
         </select>
       </fieldset>
     </form>
@@ -273,6 +287,11 @@ export default function SearchFilter() {
 }
 
 /*
+      <fieldset>
+        <select>
+          <option>Get Sets</option>
+        </select>
+      </fieldset>
     attribute      String?
     level          Int?
     play_cost      Int?
