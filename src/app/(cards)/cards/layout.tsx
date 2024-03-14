@@ -1,4 +1,4 @@
-import Header from "../../_components/header.tsx"
+import Header from "../../_components/header"
 
 export default function RootLayout({
   children,

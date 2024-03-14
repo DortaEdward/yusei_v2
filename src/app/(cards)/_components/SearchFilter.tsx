@@ -1,317 +1,168 @@
 "use client";
-import { useState } from "react"
+import { useState } from "react";
+import {
+  colors,
+  attributes,
+  levels,
+  cardtypes,
+  stages,
+  playCosts,
+  evoCosts,
+  digiTypes,
+} from "../misc/data";
 export default function SearchFilter() {
-  const [formData, setFormData] = useState();
-
-  const colors = ["red", "blue", "yellow", "green", "white", "black", "purple"]
-  const attributes = ["data", "vaccine", "free", "virus", "variable"]
-  const levels = [2, 3, 4, 5, 6, 7]
-  const cardtypes = ["digimon", "digi-egg", "option", "tamer"]
-  const stages = ["armor form", "baby", "champion", "d-reaper", "hybrid", "in-training", "mega", "rookie", "ultimate"]
-  const playCosts = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-  const evoCosts = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-  const digiTypes = [
-    "9000",
-    "AA Defense Agent",
-    "Abadin Electronics",
-    "Ability Synthesis Agent",
-    "Abnormal",
-    "Alien",
-    "Alien Humanoid",
-    "Amphibian",
-    "Ancient",
-    "Ancient Animal",
-    "Ancient Aquabeast",
-    "Ancient Bird",
-    "Ancient Birdkin",
-    "Ancient Crustacean",
-    "Ancient Dragon",
-    "Ancient Dragonkin",
-    "Ancient Fairy",
-    "Ancient Fish",
-    "Ancient Holy Warrior",
-    "Ancient Insectoid",
-    "Ancient Mineral",
-    "Ancient Mutant",
-    "Ancient Mythical Beast",
-    "Ancient Plant",
-    "Android",
-    "Angel",
-    "Animal",
-    "Ankylosaur",
-    "Aquabeast",
-    "Aquatic",
-    "Archangel",
-    "Armor",
-    "Authority",
-    "Avatar",
-    "Avian",
-    "Baby Dragon",
-    "Base Defense Agent",
-    "Beast",
-    "Beast Dragon",
-    "Beast Knight",
-    "Beastkin",
-    "Bird",
-    "Bird Dragon",
-    "Birdkin",
-    "Blue Flare",
-    "Boss",
-    "Bulb",
-    "Carnivorous Plant",
-    "Ceratopsian",
-    "Cherub",
-    "Commander Agent",
-    "Composite",
-    "Composition",
-    "CRT",
-    "Crustacean",
-    "Cyborg",
-    "D-Brigade",
-    "Dark Animal",
-    "Dark Dragon",
-    "Dark Knight",
-    "Demon",
-    "Demon Lord",
-    "Deva",
-    "DigiPolice",
-    "Dinosaur",
-    "Dominion",
-    "Dragon",
-    "Dragon Warrior",
-    "Dragonkin",
-    "Earth Dragon",
-    "Enhancement",
-    "Espionage Agent",
-    "Evil",
-    "Evil Dragon",
-    "Fairy",
-    "Fallen Angel",
-    "Fire",
-    "Fire Dragon",
-    "Flame",
-    "Food",
-    "Four Great Dragons",
-    "Four Sovereigns",
-    "Galaxy",
-    "General",
-    "Ghost",
-    "Giant Bird",
-    "God Beast",
-    "Grappling Agent",
-    "Ground Combat Agent",
-    "Holy Beast",
-    "Holy Bird",
-    "Holy Dragon",
-    "Holy Sword",
-    "Holy Warrior",
-    "Hunter",
-    "Ice-Snow",
-    "Icy",
-    "Insectoid",
-    "Intel Acquisition Agent",
-    "Invader",
-    "Larva",
-    "LCD",
-    "Legend-Arms",
-    "Lesser",
-    "LIBERATOR",
-    "Light Dragon",
-    "Light Fang",
-    "Machine",
-    "Machine Dragon",
-    "Magic Knight",
-    "Magic Warrior",
-    "Major",
-    "Mammal",
-    "Marine Man",
-    "Mine",
-    "Mineral",
-    "Mini Angel",
-    "Mini Bird",
-    "Mini Dragon",
-    "Minor",
-    "Mollusk",
-    "Monk",
-    "Mothership Agent",
-    "Musical Instrument",
-    "Mutant",
-    "Mysterious Beast",
-    "Mysterious Bird",
-    "Mythical",
-    "Mythical Animal",
-    "Mythical Beast",
-    "Mythical Dragon",
-    "Night Claw",
-    "NO DATA",
-    "Parasite",
-    "Perfect",
-    "Pixie",
-    "Plesiosaur",
-    "Principality",
-    "Puppet",
-    "Rare Animal",
-    "Reconnaissance Agent",
-    "Reptile",
-    "Reptile Man",
-    "Rock",
-    "Rock Dragon",
-    "Royal Knight",
-    "Sea Animal",
-    "Sea Beast",
-    "Seraph",
-    "Seven Great Demon Lords",
-    "Shaman",
-    "Skeleton",
-    "Sky Dragon",
-    "SoC",
-    "Super Major",
-    "Tathāgata",
-    "Ten Warriors",
-    "Three Great Angels",
-    "Throne",
-    "Tropical Fish",
-    "Twilight",
-    "Unanalyzable",
-    "Undead",
-    "Unidentified",
-    "Unique",
-    "Unknown",
-    "Vegetation",
-    "Virtue",
-    "Warrior",
-    "Weapon",
-    "Wizard",
-    "X Antibody",
-    "Xros Heart",]
-
+  const [formData, setFormData] = useState({
+      
+    });
 
   return (
-    <form className="flex">
+  <div className="w-full py-4"> 
+    <form className="flex flex-col gap-4 items-center justify-center">
       <fieldset>
-        <input className="px-2 py-1 outline none" placeholder="Card Name" name="name" type="text" />
+        <input
+          className="outline-none px-2 py-1 text-lg w-96"
+          placeholder="Card Name"
+          name="name"
+          type="text"
+        />
       </fieldset>
 
-      <fieldset className="">
-        <select className="bg-gray-100 px-2 py-1 rounded cursor-pointer outline-none">
-          <option value="" disabled selected>Select Attribute</option>
-          {
-            attributes.map((attribute: string) => {
-              return(
-                <option className="capitalize" value={attribute} key={attribute}>{attribute}</option>
-              )
-            })
-          }
+      <div className="flex flex-wrap gap-2 items-center justify-center">
+      <fieldset>
+        <select className="cursor-pointer rounded bg-gray-100 px-2 py-1 outline-none">
+          <option value=""  selected>
+            Select Attribute
+          </option>
+          {attributes.map((attribute: string) => {
+            return (
+              <option className="capitalize" value={attribute} key={attribute}>
+                {attribute}
+              </option>
+            );
+          })}
+        </select>
+      </fieldset>
+      <fieldset>
+        <select className="cursor-pointer rounded bg-gray-100 px-2 py-1 outline-none">
+          <option value=""  selected>
+            Select Stage
+          </option>
+          {stages.map((stage: string) => {
+            return (
+              <option className="capitalize" value={stage} key={stage}>
+                {stage}
+              </option>
+            );
+          })}
         </select>
       </fieldset>
 
       <fieldset>
-        <select className="bg-gray-100 px-2 py-1 rounded cursor-pointer outline-none">
-          <option value="" disabled selected>Select Level</option>
-          {
-            levels.map((level: number) => {
-              return(
-                <option className="capitalize" value={level} key={level}>{level}</option>
-              )
-            })
-          }
+        <select className="cursor-pointer rounded bg-gray-100 px-2 py-1 outline-none">
+          <option value=""  selected>
+            Select Level
+          </option>
+          {levels.map((level: number) => {
+            return (
+              <option className="capitalize" value={level} key={level}>
+                {level}
+              </option>
+            );
+          })}
         </select>
       </fieldset>
 
       <fieldset>
-        <select className="bg-gray-100 px-2 py-1 rounded cursor-pointer outline-none">
-          <option value="" disabled selected>Select Cost</option>
-          {
-            playCosts.map((cost: string) => {
-              return(
-                <option className="capitalize" value={cost} key={cost}>{cost}</option>
-              )
-            })
-          }
+        <select className="cursor-pointer rounded bg-gray-100 px-2 py-1 outline-none">
+          <option value=""  selected>
+            Select Cost
+          </option>
+          {playCosts.map((cost: number) => {
+            return (
+              <option className="capitalize" value={cost} key={cost}>
+                {cost}
+              </option>
+            );
+          })}
         </select>
       </fieldset>
 
       <fieldset>
-        <select className="bg-gray-100 px-2 py-1 rounded cursor-pointer outline-none">
-          <option value="" disabled selected>Select Primary Color</option>
-          {
-            colors.map((color: string) => {
-              return(
-                <option className="capitalize" value={color} key={color}>{color}</option>
-              )
-            })
-          }
+        <select className="cursor-pointer rounded bg-gray-100 px-2 py-1 outline-none">
+          <option value=""  selected>
+            Select Primary Color
+          </option>
+          {colors.map((color: string) => {
+            return (
+              <option className="capitalize" value={color} key={color}>
+                {color}
+              </option>
+            );
+          })}
         </select>
       </fieldset>
 
       <fieldset>
-        <select className="bg-gray-100 px-2 py-1 rounded cursor-pointer outline-none">
-          <option value="" disabled selected>Select Secondary Color</option>
-          {
-            colors.map((color: string) => {
-              return(
-                <option className="capitalize" value={color} key={color}>{color}</option>
-              )
-            })
-          }
+        <select className="cursor-pointer rounded bg-gray-100 px-2 py-1 outline-none">
+          <option value=""  selected>
+            Select Secondary Color
+          </option>
+          {colors.map((color: string) => {
+            return (
+              <option className="capitalize" value={color} key={color}>
+                {color}
+              </option>
+            );
+          })}
         </select>
       </fieldset>
 
       <fieldset>
-        <select className="bg-gray-100 px-2 py-1 rounded cursor-pointer outline-none">
-          <option value="" disabled selected>Select Evolution Cost</option>
-          {
-            evoCosts.map((cost: string) => {
-              return(
-                <option className="capitalize" value={cost} key={cost}>{cost}</option>
-              )
-            })
-          }
+        <select className="cursor-pointer rounded bg-gray-100 px-2 py-1 outline-none">
+          <option value=""  selected>
+            Select Evolution Cost
+          </option>
+          {evoCosts.map((cost: number) => {
+            return (
+              <option className="capitalize" value={cost} key={cost}>
+                {cost}
+              </option>
+            );
+          })}
         </select>
       </fieldset>
 
       <fieldset>
-        <select className="bg-gray-100 px-2 py-1 rounded cursor-pointer outline-none">
-          <option value="" disabled selected>Select Type</option>
-          {
-            digiTypes.map((types: string) => {
-              return(
-                <option className="capitalize" value={types} key={types}>{types}</option>
-              )
-            })
-          }
+        <select className="cursor-pointer rounded bg-gray-100 px-2 py-1 outline-none">
+          <option value=""  selected>
+            Select Card Type
+          </option>
+          {cardtypes.map((types: string) => {
+            return (
+              <option className="capitalize" value={types} key={types}>
+                {types}
+              </option>
+            );
+          })}
         </select>
       </fieldset>
+
+      <fieldset>
+        <select className="cursor-pointer rounded bg-gray-100 px-2 py-1 outline-none">
+          <option value=""  selected>
+            Select Type
+          </option>
+          {digiTypes.map((types: string) => {
+            return (
+              <option className="capitalize" value={types} key={types}>
+                {types}
+              </option>
+            );
+          })}
+        </select>
+      </fieldset>
+      </div>
     </form>
+    </div>
   );
 }
-
-/*
-      <fieldset>
-        <select>
-          <option>Get Sets</option>
-        </select>
-      </fieldset>
-    attribute      String?
-    level          Int?
-    play_cost      Int?
-    evolution_cost Int?
-    cardrarity     String?
-    artist         String?
-    dp             Int?
-    digi_type      String?
-    cardnumber     String?
-    maineffect     String?
-    soureeffect    String?
-    set_name       String?
-    card_sets      String[]
-
-<select class="form-control" id="filter-digitype" onchange="if (!window.__cfRLUnblockHandlers) return false; searchAPI()">
-
-"Select Digi-Type</option>
-"9000</option>"AA Defense Agent</option>"Abadin Electronics</option>"Ability Synthesis Agent</option>"Abnormal</option>"Alien</option>"Alien Humanoid</option><option>Amphibian</option><option>Ancient</option><option>Ancient Animal</option><option>Ancient Aquabeast</option><option>Ancient Bird</option><option>Ancient Birdkin</option><option>Ancient Crustacean</option><option>Ancient Dragon</option><option>Ancient Dragonkin</option><option>Ancient Fairy</option><option>Ancient Fish</option><option>Ancient Holy Warrior</option><option>Ancient Insectoid</option><option>Ancient Mineral</option><option>Ancient Mutant</option><option>Ancient Mythical Beast</option><option>Ancient Plant</option><option>Android</option><option>Angel</option><option>Animal</option><option>Ankylosaur</option><option>Aquabeast</option><option>Aquatic</option><option>Archangel</option><option>Armor</option><option>Authority</option><option>Avatar</option><option>Avian</option><option>Baby Dragon</option><option>Base Defense Agent</option><option>Beast</option><option>Beast Dragon</option><option>Beast Knight</option><option>Beastkin</option><option>Bird</option><option>Bird Dragon</option><option>Birdkin</option><option>Blue Flare</option><option>Boss</option><option>Bulb</option><option>Carnivorous Plant</option><option>Ceratopsian</option><option>Cherub</option><option>Commander Agent</option><option>Composite</option><option>Composition</option><option>CRT</option><option>Crustacean</option><option>Cyborg</option><option>D-Brigade</option><option>Dark Animal</option><option>Dark Dragon</option><option>Dark Knight</option><option>Demon</option><option>Demon Lord</option><option>Deva</option><option>DigiPolice</option><option>Dinosaur</option><option>Dominion</option><option>Dragon</option><option>Dragon Warrior</option><option>Dragonkin</option><option>Earth Dragon</option><option>Enhancement</option><option>Espionage Agent</option><option>Evil</option><option>Evil Dragon</option><option>Fairy</option><option>Fallen Angel</option><option>Fire</option><option>Fire Dragon</option><option>Flame</option><option>Food</option><option>Four Great Dragons</option><option>Four Sovereigns</option><option>Galaxy</option><option>General</option><option>Ghost</option><option>Giant Bird</option><option>God Beast</option><option>Grappling Agent</option><option>Ground Combat Agent</option><option>Holy Beast</option><option>Holy Bird</option><option>Holy Dragon</option><option>Holy Sword</option><option>Holy Warrior</option><option>Hunter</option><option>Ice-Snow</option><option>Icy</option><option>Insectoid</option><option>Intel Acquisition Agent</option><option>Invader</option><option>Larva</option><option>LCD</option><option>Legend-Arms</option><option>Lesser</option><option>LIBERATOR</option><option>Light Dragon</option><option>Light Fang</option><option>Machine</option><option>Machine Dragon</option><option>Magic Knight</option><option>Magic Warrior</option><option>Major</option><option>Mammal</option><option>Marine Man</option><option>Mine</option><option>Mineral</option><option>Mini Angel</option><option>Mini Bird</option><option>Mini Dragon</option><option>Minor</option><option>Mollusk</option><option>Monk</option><option>Mothership Agent</option><option>Musical Instrument</option><option>Mutant</option><option>Mysterious Beast</option><option>Mysterious Bird</option><option>Mythical</option><option>Mythical Animal</option><option>Mythical Beast</option><option>Mythical Dragon</option><option>Night Claw</option><option>NO DATA</option><option>Parasite</option><option>Perfect</option><option>Pixie</option><option>Plesiosaur</option><option>Principality</option><option>Puppet</option><option>Rare Animal</option><option>Reconnaissance Agent</option><option>Reptile</option><option>Reptile Man</option><option>Rock</option><option>Rock Dragon</option><option>Royal Knight</option><option>Sea Animal</option><option>Sea Beast</option><option>Seraph</option><option>Seven Great Demon Lords</option><option>Shaman</option><option>Skeleton</option><option>Sky Dragon</option><option>SoC</option><option>Super Major</option><option>Tathāgata</option><option>Ten Warriors</option><option>Three Great Angels</option><option>Throne</option><option>Tropical Fish</option><option>Twilight</option><option>Unanalyzable</option><option>Undead</option><option>Unidentified</option><option>Unique</option><option>Unknown</option><option>Vegetation</option><option>Virtue</option><option>Warrior</option><option>Weapon</option><option>Wizard</option><option>X Antibody</option><option>Xros Heart</option>
-?&gt;
-</select>
-
-
- * */
