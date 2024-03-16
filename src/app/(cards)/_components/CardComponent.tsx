@@ -7,20 +7,20 @@ type Props = {
   setIsVisable: (val: boolean) => void;
 }
 
-export default function CardComponent({card, setActiveCard, setIsVisable}: Props){
-  function handleClick(){
+export default function CardComponent({ card, setActiveCard, setIsVisable }: Props) {
+  function handleClick() {
     setActiveCard(card);
     setIsVisable(true)
-    }
-  return(
-              <>
-                  <Image 
-                    src={`/images/${card.cardnumber}.jpg`}
-                    className="cursor-pointer rounded-md hover:scale-110 transition ease-in-out duration-300"
-                    alt={`Image of ${card.name}`}
-                    onClick={handleClick}
-                    width="160" height="260"
-                    /> 
-              </>
-  )
   }
+  return (
+    <>
+      <Image
+        src={`/images/${card.cardnumber}.jpg`}
+        className="cursor-pointer rounded-md hover:scale-105 transition ease-in-out duration-300"
+        alt={`Image of ${card.name}`}
+        onClick={handleClick}
+        width="160" height="260"
+      />
+    </>
+  )
+}
